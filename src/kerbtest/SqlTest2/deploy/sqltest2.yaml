@@ -1,0 +1,20 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqltest2
+  labels:
+    app: sqltest2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sqltest2
+  template:
+    metadata:
+      labels:
+        app: sqltest2
+    spec:
+      containers:
+      - name: sqltest2
+        image: aksvanilla.azurecr.io/sqltest2:latest
+       

@@ -1,0 +1,20 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sqltest3
+  labels:
+    app: sqltest3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sqltest3
+  template:
+    metadata:
+      labels:
+        app: sqltest3
+    spec:
+      containers:
+      - name: sqltest3
+        image: aksvanilla.azurecr.io/sqltest3:latest
+       
