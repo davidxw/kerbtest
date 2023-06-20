@@ -16,7 +16,7 @@ https://cloud.redhat.com/blog/kerberos-sidecar-container
 * Generate keytab file (requires AD credentials)
 * Get ticket from AD using kinit
 * Run application
-## Notes
+### Notes
 * Expiry time for ticket can be viewed using “klist”
 * Integrated auth using Kerberos for SQL Client currently broken in .NET 6.0 ([this](https://github.com/dotnet/SqlClient/issues/1390) bug) – works in .NET 5.0
 
@@ -29,15 +29,18 @@ Following this guide - [Authenticate .NET Core Client of SQL Server with Integra
 * Use keytab file from previous test (requires AD credentials) – this can be generated on any machine
 * Get ticket from AD using kinit
 * Run application
-## Notes
+### Notes
 One time ticket request – this test will stop working when ticket expires (restart container to get new ticket)
 # SqlTest3 – Linux Container with sidecar (NYS)
 
 Using by the sidecar approach in this article: https://cloud.redhat.com/blog/kerberos-sidecar-container
 * keytab stored as secret
 * Kerberos configured to use shared memory for token cache
-* Sidecar container periodically refreshes the new token,  which is available to the application container
+* Sidecar container periodically refreshes the new token,  which is available to the application container  
+
 Advantages:
 * Kinit-refresh container is generic – can be used by any application
 * No kerb specific tools or utilities in application container – should just work if the correct volumes are mounted
-* ![image](https://github.com/davidxw/kerbtest/assets/14179976/83fcdaf7-793e-4840-98ba-09781dc489d3)
+
+
+![image](https://github.com/davidxw/kerbtest/assets/14179976/83fcdaf7-793e-4840-98ba-09781dc489d3)
